@@ -1,0 +1,27 @@
+import java.util.*
+public class VentaSemanal{
+  private double ventas[];
+
+  public VentaSemanal(){
+    this.ventas = new double[7];
+  }
+  
+  public VentaSemanal(int tam){
+    this.ventas = new double[tam];
+  }
+  
+  public VentaSemanal(double[] ventas){
+    this.ventas = ventas;
+  }
+  
+  public CargarVentas(){
+    Scanner consola = new Scanner(System.in);
+    for(int i=0;i < this.ventas.lenght;i++){
+      System.out.println("ingrese una venta: ");
+      this.ventas[i] = Integer.parseInt(consola.nextLine());
+    }
+  }
+  
+  
+  
+}
