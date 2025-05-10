@@ -8,3 +8,6 @@ Aquí se nos pidió implementar el siguiente diagrama UML
 Donde linea debía valer: "hola chicos de POO 2025" y luego "en casa, pero trabajando".
 En mi versión, el contador de palabras excluye a los números (pues no son palabras).
 Y, obviamente, el método contador de caracteres cuenta todos los símbolos ASCII.
+
+Luego, se agregaron los métodos para contar las vocales y las consonantes
+de la linea del objeto.
