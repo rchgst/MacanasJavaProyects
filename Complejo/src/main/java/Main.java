@@ -13,5 +13,11 @@ public class Main {
     Complejo suma = complejo1.sumarComplejos(complejo2);
     System.out.println("Suma de ambos complejos");
     suma.mostrarComplejo();
+    Complejo resta = complejo1.resta(complejo2);
+    System.out.println("Resta del primer complejo con el segundo");
+    resta.mostrarComplejo();
+    resta = complejo2.resta(complejo1);
+    System.out.println("Resta del segundo complejo con el primero");
+    resta.mostrarComplejo();
   }
 }
