@@ -8,6 +8,6 @@ lenguaje de programación Java.
 ## Ayuda
 
 Esta rama tendrá cada ejercicio separado por un directorio con el
-nombre de la clase principal (la que contiene el main) y cada carpeta
-tendrá su respectivo README.md para describir el problema que resuelve
-el proyecto.
+nombre de la clase principal (la que contiene el main) o de la clase
+que tenga más relevancia, y cada carpeta tendrá su respectivo README.md para describir
+el problema que resuelve el proyecto.
