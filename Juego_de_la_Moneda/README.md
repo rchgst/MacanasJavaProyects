@@ -20,5 +20,8 @@ Cualquier persona que cuente con dinero puede participar como jugador en el Jueg
 Este es el diagrama que diseñé para este ejercicio:
 
 ![Diagrama UML](./UML.png "Diagrama UML del Juego de la Moneda")
+<<<<<<< HEAD
 
 He limitado la cantidad de jugadores a 3, pues no quería tener muchos jugadores jugando a la vez
+=======
+>>>>>>> 27ae074a8560dfe87a86b066bb5a9e07841531dc
