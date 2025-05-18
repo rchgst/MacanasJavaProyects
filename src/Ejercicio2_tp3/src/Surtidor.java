@@ -29,7 +29,7 @@ public class Surtidor {
 
     public void cargarUDiesel(int litros){
 
-        if(this.ultraDiesel <= litros)
+        if(this.ultraDiesel >= litros)
             this.ultraDiesel -= litros;
         else{
             System.out.println("el surtidor esta vacio, se cargaron los ultimos: "+this.ultraDiesel +"litros");
@@ -39,7 +39,7 @@ public class Surtidor {
 
     public void cargarEDiesel(int litros){
 
-        if(this.euroDiesel <= litros)
+        if(this.euroDiesel >= litros)
             this.euroDiesel -= litros;
         else{
             System.out.println("el surtidor esta vacio, se cargaron los ultimos: "+this.euroDiesel +"litros");
@@ -49,17 +49,17 @@ public class Surtidor {
 
     public void cargarNSuper(int litros){
 
-        if(this.naftaSuper <= litros)
+        if(this.naftaSuper >= litros)
             this.naftaSuper -= litros;
         else{
-            this.naftaSuper = 0;
             System.out.println("el surtidor esta vacio, se cargaron los ultimos: "+this.naftaSuper +"litros");
+            this.naftaSuper = 0;
         }
     }
 
     public void cargarInfinia(int litros){
 
-        if(this.naftaInfinia <= litros)
+        if(this.naftaInfinia >= litros)
             this.naftaInfinia -= litros;
         else{
             System.out.println("el surtidor esta vacio, se cargaron los ultimos: "+this.naftaInfinia +"litros");
