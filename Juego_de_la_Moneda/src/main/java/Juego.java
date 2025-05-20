@@ -41,11 +41,7 @@ public class Juego {
         }
       }
     } while (!this.jugadores.isEmpty());
-<<<<<<< HEAD
     System.out.println("El juego ha terminado!! Gracias por participar!");
-=======
-
->>>>>>> 27ae074a8560dfe87a86b066bb5a9e07841531dc
   }
 
   private void prepararJuego(Scanner scan) {

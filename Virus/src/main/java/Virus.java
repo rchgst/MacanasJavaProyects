@@ -32,7 +32,13 @@ public class Virus {
 
   @Override
   public String toString() {
-    return "Virus [nombre=" + nombre + ", esNocivo()=" + esNocivo() + "]";
+    String cadena = "=== Virus ===\nNombre: " + this.nombre + "\n¿Es nocivo?: ";
+    if (nocivo) {
+      cadena += "Si";
+    } else {
+      cadena += "No";
+    }
+    return cadena;
   }
 
 }

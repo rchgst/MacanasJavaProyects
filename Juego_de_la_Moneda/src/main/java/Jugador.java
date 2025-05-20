@@ -5,11 +5,11 @@ public class Jugador {
   private double dinero;
 
   public String getNombre() {
-    return nombre;
+    return this.nombre;
   }
 
   public double getDinero() {
-    return dinero;
+    return this.dinero;
   }
 
   public void setNombre(String nombre) {
@@ -39,7 +39,7 @@ public class Jugador {
         System.out.println("Dinero actual: " + getDinero());
       }
     } while (apuesta >= getDinero() || apuesta < 0);
-    setDinero(getDinero() - apuesta);
+    this.dinero -= apuesta;
     return apuesta;
   }
 }

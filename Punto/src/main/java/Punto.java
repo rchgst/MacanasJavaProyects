@@ -23,7 +23,7 @@ public class Punto {
   }
 
   public double distanciaEuclidea(Punto p) {
-    return sqrt(pow(p.getX() - getX(), 2) + pow(p.getY() - getY(), 2));
+    return sqrt(pow(p.getX() - this.x, 2) + pow(p.getY() - this.y, 2));
   }
 
   public Punto(double x, double y) {
