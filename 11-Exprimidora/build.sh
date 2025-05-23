@@ -4,4 +4,4 @@
 javac -d out src/main/java/*.java
 
 # Ejecutar
-java -cp out Main
+java -cp out Exprimidora

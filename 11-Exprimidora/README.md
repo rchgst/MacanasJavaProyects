@@ -13,3 +13,7 @@ que 1gr. = 1ml. y un tomate es una hortaliza.
 ![Exprimidora](./Exprimidora.png "Tabla de jugo obtenido")
 
 Implementar el ejercicio en UML y en Java.
+
+Aquí esta mi propuesta del diagrama UML:
+
+![UML](./UML.png "Diagrama UML de Exprimidora")
