@@ -5,7 +5,13 @@ public class Exprimidora {
         this.nombre = "H2025";
     }
 
-    public static double exprimir(Vegetal veg){
+    /*public static double exprimir(Vegetal veg){
+        double jugo;
+        jugo = (veg.peso * veg.getPorcentajeJugo()) - veg.getPesoExtra();
+        return jugo;
+    }*/
+
+    public double exprimir(Vegetal veg){
         double jugo;
         jugo = (veg.peso * veg.getPorcentajeJugo()) - veg.getPesoExtra();
         return jugo;
