@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/Ejercicio1_tp5/Ejercicio1_tp5.iml" filepath="$PROJECT_DIR$/src/Ejercicio1_tp5/Ejercicio1_tp5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Ejercicio3_tp3/Ejercicio3_tp3.iml" filepath="$PROJECT_DIR$/src/Ejercicio3_tp3/Ejercicio3_tp3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Ejercicio4_tp3/Ejercicio4_tp3.iml" filepath="$PROJECT_DIR$/src/Ejercicio4_tp3/Ejercicio4_tp3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Ejercicio5_tp3/Ejercicio5_tp3.iml" filepath="$PROJECT_DIR$/src/Ejercicio5_tp3/Ejercicio5_tp3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Reproductor/Reproductor.iml" filepath="$PROJECT_DIR$/src/Reproductor/Reproductor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Truco_Parcial/Truco_Parcial.iml" filepath="$PROJECT_DIR$/src/Truco_Parcial/Truco_Parcial.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Uno/Uno.iml" filepath="$PROJECT_DIR$/src/Uno/Uno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/directorio_GH_macana.iml" filepath="$PROJECT_DIR$/directorio_GH_macana.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/directorio_GH_macana2.iml" filepath="$PROJECT_DIR$/src/directorio_GH_macana2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/histograma/histograma.iml" filepath="$PROJECT_DIR$/src/histograma/histograma.iml" />
+    </modules>
+  </component>
+</project>
