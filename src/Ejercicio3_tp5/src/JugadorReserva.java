@@ -12,4 +12,8 @@ public class JugadorReserva extends Jugador{
         long cantMeses = ChronoUnit.MONTHS.between(fchInicio,hasta);
         return cantMeses*1500;
     }
+
+    public String toString(){
+        return super.toString() + " jugador de reserva";
+    }
 }

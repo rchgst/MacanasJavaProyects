@@ -18,4 +18,7 @@ public class JugadorPrimera extends Jugador{
         return cantMeses*2500;
     }
 
+    public String toString(){
+        return super.toString()+" fecha final: "+fchFin + " jugador de primera";
+    }
 }
