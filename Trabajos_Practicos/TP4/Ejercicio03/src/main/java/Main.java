@@ -1,0 +1,57 @@
+public class Main {
+  public static void main(String[] args) {
+    Fotografia foto = new Fotografia();
+    int[][] fotoAstro = new int[6][8];
+    fotoAstro[0][0] = 0;
+    fotoAstro[0][1] = 57;
+    fotoAstro[0][2] = 76;
+    fotoAstro[0][3] = 0;
+    fotoAstro[0][4] = 0;
+    fotoAstro[0][5] = 0;
+    fotoAstro[0][6] = 114;
+    fotoAstro[0][7] = 152;
+    fotoAstro[1][0] = 95;
+    fotoAstro[1][1] = 247;
+    fotoAstro[1][2] = 114;
+    fotoAstro[1][3] = 0;
+    fotoAstro[1][4] = 0;
+    fotoAstro[1][5] = 0;
+    fotoAstro[1][6] = 38;
+    fotoAstro[1][7] = 57;
+    fotoAstro[2][0] = 38;
+    fotoAstro[2][1] = 114;
+    fotoAstro[2][2] = 38;
+    fotoAstro[2][3] = 133;
+    fotoAstro[2][4] = 57;
+    fotoAstro[2][5] = 0;
+    fotoAstro[2][6] = 190;
+    fotoAstro[2][7] = 0;
+    fotoAstro[3][0] = 0;
+    fotoAstro[3][1] = 0;
+    fotoAstro[3][2] = 76;
+    fotoAstro[3][3] = 255;
+    fotoAstro[3][4] = 76;
+    fotoAstro[3][5] = 19;
+    fotoAstro[3][6] = 152;
+    fotoAstro[3][7] = 0;
+    fotoAstro[4][0] = 0;
+    fotoAstro[4][1] = 0;
+    fotoAstro[4][2] = 133;
+    fotoAstro[4][3] = 228;
+    fotoAstro[4][4] = 114;
+    fotoAstro[4][5] = 171;
+    fotoAstro[4][6] = 190;
+    fotoAstro[4][7] = 76;
+    fotoAstro[5][0] = 95;
+    fotoAstro[5][1] = 0;
+    fotoAstro[5][2] = 114;
+    fotoAstro[5][3] = 190;
+    fotoAstro[5][4] = 114;
+    fotoAstro[5][5] = 76;
+    fotoAstro[5][6] = 152;
+    fotoAstro[5][7] = 0;
+    foto.setImagen(fotoAstro);
+    foto.mostrarValoresImagen();
+    foto.imprimirEstrellas();
+  }
+}
