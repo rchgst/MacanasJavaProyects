@@ -1,0 +1,52 @@
+public class Main {
+  public static void main(String[] args) {
+    MatrizEspejo matriz = new MatrizEspejo(3, 4);
+    matriz.setValor(0, 0, 'A');
+    matriz.setValor(0, 1, 'B');
+    matriz.setValor(0, 2, 'C');
+    matriz.setValor(0, 3, 'D');
+    matriz.setValor(1, 0, 'E');
+    matriz.setValor(1, 1, 'F');
+    matriz.setValor(1, 2, 'G');
+    matriz.setValor(1, 3, 'H');
+    matriz.setValor(2, 0, 'I');
+    matriz.setValor(2, 1, 'J');
+    matriz.setValor(2, 2, 'K');
+    matriz.setValor(2, 3, 'L');
+    System.out.println("Matriz original");
+    System.out.println(matriz);
+    System.out.println("Matriz espejo");
+    matriz.espejo();
+    System.out.println(matriz);
+    MatrizMaxpooleada matrizMax = new MatrizMaxpooleada(4, 6, 2);
+    matrizMax.setValor(0, 0, 'F');
+    matrizMax.setValor(0, 1, 'B');
+    matrizMax.setValor(0, 2, 'C');
+    matrizMax.setValor(0, 3, 'D');
+    matrizMax.setValor(0, 4, '0');
+    matrizMax.setValor(0, 5, '1');
+    matrizMax.setValor(1, 0, 'E');
+    matrizMax.setValor(1, 1, 'A');
+    matrizMax.setValor(1, 2, 'G');
+    matrizMax.setValor(1, 3, 'H');
+    matrizMax.setValor(1, 4, '2');
+    matrizMax.setValor(1, 5, '3');
+    matrizMax.setValor(2, 0, 'I');
+    matrizMax.setValor(2, 1, 'J');
+    matrizMax.setValor(2, 2, 'K');
+    matrizMax.setValor(2, 3, 'Z');
+    matrizMax.setValor(2, 4, '8');
+    matrizMax.setValor(2, 5, '5');
+    matrizMax.setValor(3, 0, 'M');
+    matrizMax.setValor(3, 1, 'N');
+    matrizMax.setValor(3, 2, 'O');
+    matrizMax.setValor(3, 3, 'P');
+    matrizMax.setValor(3, 4, '6');
+    matrizMax.setValor(3, 5, '7');
+    System.out.println("Matriz Original");
+    System.out.println(matrizMax);
+    MatrizMaxpooleada matrizMaxpooleada = matrizMax.matrizMaxpooleada();
+    System.out.println("Matriz Maxpooleada");
+    System.out.println(matrizMaxpooleada);
+  }
+}
