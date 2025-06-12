@@ -191,5 +191,7 @@ public class PanelBotones extends JPanel implements ActionListener {
             panelResultado.setResultadoLabel(); // Solo actualiza vista mientras se arma la operación
         }
 
+        // → DEVOLVER FOCO AL FRAME ←
+        SwingUtilities.getWindowAncestor(this).requestFocusInWindow();
     }
 }

@@ -87,8 +87,14 @@ public class PanelResultado extends JPanel {
     }
 
     public void rep(){
-        preCadena = preCadena.substring(0,preCadena.length()-1);
-        preLatex = preLatex.substring(0,preLatex.length()-1);
+        if(etiquetaVacia())
+            vacia();
+        if (preLatex.length() > 0) {
+            preCadena = preCadena.substring(0, preCadena.length() - 1);
+            preLatex = preLatex.substring(0, preLatex.length() - 1);
+        }
+        else
+            preLatex = preCadena = "";
     }
 
     public void del(){
@@ -106,6 +112,18 @@ public class PanelResultado extends JPanel {
 
     public String postCadena(){
         if(validarPreCadena()){
+            if(operacionIncompleta("+"))
+                preCadena.replace("<+","");
+
+            if(operacionIncompleta("-"))
+                preCadena.replace("<-","");
+
+            if(operacionIncompleta("/"))
+                preCadena.replace("</","");
+
+            if(operacionIncompleta("*"))
+                preCadena.replace("<*","");
+
             evaluar = preCadena.replace("<","");
             evaluar = evaluar.replace(">","");
         }
@@ -127,6 +145,8 @@ public class PanelResultado extends JPanel {
             Expression expr = new ExpressionBuilder(evaluar).build();
             double result = expr.evaluate();
             String res = String.valueOf(result);
+            preCadena = preLatex = res;
+
 
             TeXFormula  formula = new TeXFormula(res);
             TeXIcon icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 20);
@@ -175,6 +195,33 @@ public class PanelResultado extends JPanel {
 
     public void dibujaPotencia(){
         preLatex += "^{";
+    }
+
+    public boolean etiquetaVacia(){
+        return resultadoLabel.getIcon()==null;
+    }
+
+    public void limpiarCalculos(){
+        preCadena = preLatex = "";
+    }
+
+    public static int contarSubCadena(String texto, String subcadena) {
+        int contador = 0;
+        int indice = 0;
+
+        while ((indice = texto.indexOf(subcadena, indice)) != -1) {
+            contador++;
+            indice += subcadena.length(); // Avanza para no contar la misma ocurrencia
+        }
+
+        return contador;
+    }
+
+
+    public boolean operacionIncompleta(String op){
+        int operaciones = contarSubCadena(preCadena,"<"+op);
+        int finDeOperaciones = contarSubCadena(preCadena,op+">");
+        return operaciones != finDeOperaciones;
     }
 
 }
