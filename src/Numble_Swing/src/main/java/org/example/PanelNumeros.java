@@ -28,8 +28,6 @@ public class PanelNumeros extends JPanel implements KeyListener {
             }
         }
 
-        controlador.muestraNum();
-
         addKeyListener(this);
         setFocusable(true);
         requestFocusInWindow();
