@@ -11,6 +11,18 @@ import java.util.List;
 
 public class LibroDAO implements ILibroDAO{
 
+    public static void seteaCamposLibro(Libro libro,ResultSet rs){
+        try {
+            libro.setId(rs.getInt("id"));
+            libro.setTitulo(rs.getString("titulo"));
+            libro.setAnio(rs.getInt("anio"));
+            libro.setIsbn(rs.getString("isbn"));
+            libro.setCategoria(rs.getString("categoria"));
+        }catch (Exception e){
+            System.out.println("error al modificar valores del libro: "+e.getMessage());
+        }
+    }
+
     @Override
     public List<Libro> lista() {
         List<Libro>libros = new ArrayList<>();
@@ -24,13 +36,7 @@ public class LibroDAO implements ILibroDAO{
 
             while (rs.next()){
                 Libro libro = new Libro();
-                libro.setId(rs.getInt("id"));
-                libro.setTitulo(rs.getString("titulo"));
-                libro.setAutor(rs.getString("autor"));
-                libro.setAnio(rs.getInt("anio"));
-                libro.setIsbn(rs.getString("isbn"));
-                libro.setCategoria(rs.getString("categoria"));
-
+                seteaCamposLibro(libro,rs);
                 libros.add(libro);
             }
         }catch (Exception e){
@@ -54,12 +60,7 @@ public class LibroDAO implements ILibroDAO{
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     libroRet = new Libro();
-                    libroRet.setId(rs.getInt("id"));
-                    libroRet.setTitulo(rs.getString("titulo"));
-                    libroRet.setAutor(rs.getString("autor"));
-                    libroRet.setAnio(rs.getInt("anio"));
-                    libroRet.setIsbn(rs.getString("isbn"));
-                    libroRet.setCategoria(rs.getString("categoria"));
+                    seteaCamposLibro(libroRet,rs);
                 }
             }
 
@@ -72,17 +73,16 @@ public class LibroDAO implements ILibroDAO{
 
     @Override
     public void insertaLibro(Libro libro) {
-        String sql = "INSERT INTO libro(titulo,autor,anio,isbn,categoria) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO libro(titulo,anio,isbn,categoria) VALUES (?, ?, ?, ?, ?)";
 
         try (
                 Connection conn = ConexionBDD.getConexion();
                 PreparedStatement ps = conn.prepareStatement(sql);
         ){
             ps.setString(1,libro.getTitulo());
-            ps.setString(2,libro.getAutor());
-            ps.setInt(3,libro.getAnio());
-            ps.setString(4,libro.getIsbn());
-            ps.setString(5,libro.getCategoria());
+            ps.setInt(2,libro.getAnio());
+            ps.setString(3,libro.getIsbn());
+            ps.setString(4,libro.getCategoria());
             ps.execute();
         }catch (Exception e){
             System.out.println("error: "+e.getMessage());
@@ -109,18 +109,17 @@ public class LibroDAO implements ILibroDAO{
 
     @Override
     public void actualizaLibro(Libro libro) {
-        String sql = "UPDATE libro SET titulo = ?, autor = ?, anio = ?, isbn = ?, categoria = ? WHERE id = ?";
+        String sql = "UPDATE libro SET titulo = ?, anio = ?, isbn = ?, categoria = ? WHERE id = ?";
 
         try (
                 Connection conn = ConexionBDD.getConexion();
                 PreparedStatement ps = conn.prepareStatement(sql);
         ) {
             ps.setString(1, libro.getTitulo());
-            ps.setString(2, libro.getAutor());
-            ps.setInt(3, libro.getAnio());
-            ps.setString(4, libro.getIsbn());
-            ps.setString(5,libro.getCategoria());
-            ps.setInt(6, libro.getId());
+            ps.setInt(2, libro.getAnio());
+            ps.setString(3, libro.getIsbn());
+            ps.setString(4,libro.getCategoria());
+            ps.setInt(5, libro.getId());
             ps.executeUpdate();
 
         } catch (Exception e) {

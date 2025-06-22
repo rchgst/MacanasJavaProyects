@@ -12,6 +12,7 @@ public class Usuario {
     private String password; // Encriptada
     private String rol;
     private Date fechaRegistro;
+    private boolean sancion;
 
     public Usuario(String dni, String nombre, String email, String password, String rol, Date fechaRegistro) {
         this.dni = dni;
@@ -20,6 +21,7 @@ public class Usuario {
         this.password = password;
         this.rol = rol;
         this.fechaRegistro = fechaRegistro;
+        sancion = false;
     }
 
     public Usuario(int id, String dni, String nombre, String email, String password, String rol, Date fechaRegistro) {
@@ -79,6 +81,14 @@ public class Usuario {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public boolean isSancion() {
+        return sancion;
+    }
+
+    public void setSancion(boolean sancion) {
+        this.sancion = sancion;
     }
 
     public java.sql.Date getFechaRegistro() {

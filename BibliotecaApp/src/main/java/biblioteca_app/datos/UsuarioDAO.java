@@ -385,7 +385,7 @@ public class UsuarioDAO implements IUsuarioDAO{
         }
     }
 
-    public void actualizarFechaREgistro(int idUsuario, Date nuevaFechaRegistro){
+    public void actualizarFechaRegistro(int idUsuario, Date nuevaFechaRegistro){
         String sql = "UPDATE usuarios SET fechaRegistro = ? WHERE id = ?";
         try (Connection conn = ConexionBDD.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {

@@ -1,13 +1,15 @@
 package biblioteca_app.dominio;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Libro {
 
-    private String titulo,autor,isbn,categoria;
+    private String titulo,isbn,categoria;
     private int id,anio;
+    private Autor autor;
 
-    public Libro(String titulo, String autor, String isbn, String categoria, int anio) {
+    public Libro(String titulo, Autor autor, String isbn, String categoria, int anio) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
@@ -15,7 +17,7 @@ public class Libro {
         this.anio = anio;
     }
 
-    public Libro(String titulo, String autor, String isbn, String categoria, int anio, int id) {
+    public Libro(String titulo, Autor autor, String isbn, String categoria, int anio, int id) {
         this(titulo,autor,isbn,categoria,anio);
         this.id = id;
     }
@@ -34,11 +36,11 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
 
@@ -90,11 +92,11 @@ public class Libro {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Libro libro = (Libro) o;
-        return id == libro.id && anio == libro.anio && Objects.equals(titulo, libro.titulo) && Objects.equals(autor, libro.autor) && Objects.equals(isbn, libro.isbn) && Objects.equals(categoria, libro.categoria);
+        return id == libro.id && anio == libro.anio && Objects.equals(titulo, libro.titulo) && Objects.equals(isbn, libro.isbn) && Objects.equals(categoria, libro.categoria) && Objects.equals(autor, libro.autor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titulo, autor, isbn, categoria, id, anio);
+        return Objects.hash(titulo, isbn, categoria, id, anio, autor);
     }
 }
