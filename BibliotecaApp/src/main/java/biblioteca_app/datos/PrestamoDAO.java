@@ -255,7 +255,17 @@ public class PrestamoDAO implements IPrestamoDAO{
 
     @Override
     public boolean prestamoVencido(Prestamo prestamo) {
-        return prestamo.getDevolucion_esperada().compareTo(prestamo.getDevolucion_real())<0;
+        if (prestamo == null || prestamo.getDevolucion_esperada() == null) {
+            throw new IllegalArgumentException("Préstamo o fecha esperada no pueden ser nulos");
+        }
+
+        // Si no se ha devuelto, comparamos con la fecha actual
+        if (prestamo.getDevolucion_real() == null) {
+            return prestamo.getDevolucion_esperada().before(new Date()); // ¿La fecha esperada ya pasó?
+        }
+
+        // Si ya se devolvió, verificamos si fue después de lo esperado
+        return prestamo.getDevolucion_esperada().before(prestamo.getDevolucion_real());
     }
 
     @Override
