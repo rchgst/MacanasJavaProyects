@@ -8,7 +8,7 @@ public class ConexionBDD {
     public static Connection getConexion(){
         Connection conn = null;
 
-        String url = "jdbc:mysql://localhost:3306/libros";
+        String url = "jdbc:mysql://localhost:3306/biblioteca_db";
         String usuario = "root";
         String password = "rchsqladmin!";
 
@@ -21,7 +21,4 @@ public class ConexionBDD {
 
         return conn;
     }
-
-
-
 }
