@@ -1,7 +1,9 @@
 package biblioteca_app.presentacion;
 
+import biblioteca_app.presentacion.paneles.LoginView;
+
 public class BibliotecaApp {
     public static void main(String[] args) {
-        LoginView login = new LoginView();
+        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
     }
 }

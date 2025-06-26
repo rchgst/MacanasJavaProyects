@@ -11,21 +11,19 @@ public class Usuario {
     private String email;
     private String password; // Encriptada
     private String rol;
-    private Date fechaRegistro;
     private boolean sancion;
 
-    public Usuario(String dni, String nombre, String email, String password, String rol, Date fechaRegistro) {
+    public Usuario(String dni, String nombre, String email, String password, String rol) {
         this.dni = dni;
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.rol = rol;
-        this.fechaRegistro = fechaRegistro;
         sancion = false;
     }
 
-    public Usuario(int id, String dni, String nombre, String email, String password, String rol, Date fechaRegistro) {
-        this(dni,nombre,email,password,rol,fechaRegistro);
+    public Usuario(int id, String dni, String nombre, String email, String password, String rol) {
+        this(dni,nombre,email,password,rol);
         this.id = id;
     }
 
@@ -91,14 +89,6 @@ public class Usuario {
         this.sancion = sancion;
     }
 
-    public java.sql.Date getFechaRegistro() {
-        return (java.sql.Date) fechaRegistro;
-    }
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
     @Override
     public String toString() {
         return "Usuario{" +
@@ -107,20 +97,18 @@ public class Usuario {
                 ", nombre='" + nombre + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", rol='" + rol + '\'' +
-                ", fechaRegistro=" + fechaRegistro +
-                '}';
+                ", rol='" + rol;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return id == usuario.id && Objects.equals(dni, usuario.dni) && Objects.equals(nombre, usuario.nombre) && Objects.equals(email, usuario.email) && Objects.equals(password, usuario.password) && Objects.equals(rol, usuario.rol) && Objects.equals(fechaRegistro, usuario.fechaRegistro);
+        return id == usuario.id && Objects.equals(dni, usuario.dni) && Objects.equals(nombre, usuario.nombre) && Objects.equals(email, usuario.email) && Objects.equals(password, usuario.password) && Objects.equals(rol, usuario.rol);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dni, nombre, email, password, rol, fechaRegistro);
+        return Objects.hash(id, dni, nombre, email, password, rol);
     }
 }

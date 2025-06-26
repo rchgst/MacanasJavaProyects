@@ -16,8 +16,8 @@ public class UsuarioDAO implements IUsuarioDAO{
 
     @Override
     public void agregarUsuario(Usuario usuario) {
-        String sql = "INSERT INTO usuarios(dni, nombre, email, password, rol, fechaRegistro) "+
-                "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios(dni, nombre, email, password, rol) "+
+                "VALUES (?, ?, ?, ?, ?)";
 
         String hashedPassword = BCrypt.hashpw(usuario.getPassword(),BCrypt.gensalt());
         try (
@@ -30,9 +30,9 @@ public class UsuarioDAO implements IUsuarioDAO{
             ps.setString(3,usuario.getEmail());
             ps.setString(4,hashedPassword);
             ps.setString(5,usuario.getRol());
-            ps.setDate(6,usuario.getFechaRegistro());
 
             ps.execute();
+            System.out.println("usuario agregado con exito");
 
         }catch (Exception e){
             System.out.println("error de conexion: "+e.getMessage());
@@ -61,7 +61,6 @@ public class UsuarioDAO implements IUsuarioDAO{
                     usuario.setEmail(rs.getString("email"));
                     usuario.setPassword(rs.getString("password"));
                     usuario.setRol(rs.getString("rol"));
-                    usuario.setFechaRegistro(rs.getDate("fechaRegistro"));
 
                 }
             }
@@ -75,7 +74,7 @@ public class UsuarioDAO implements IUsuarioDAO{
 
     @Override
     public void actualizarUsuario(Usuario usuario) {
-        String sql = "UPDATE usuarios SET dni = ?, nombre = ?, email = ?, password = ?,rol = ?, fechaRegistro = ? WHERE id = ?";
+        String sql = "UPDATE usuarios SET dni = ?, nombre = ?, email = ?, password = ?,rol = ? WHERE id = ?";
         String hashedPassword = BCrypt.hashpw(usuario.getPassword(),BCrypt.gensalt());
 
         try (
@@ -87,7 +86,6 @@ public class UsuarioDAO implements IUsuarioDAO{
             ps.setString(3,usuario.getEmail());
             ps.setString(4,hashedPassword);
             ps.setString(5,usuario.getRol());
-            ps.setDate(6,usuario.getFechaRegistro());
             ps.setInt(7,usuario.getId());
 
             ps.execute();
@@ -134,7 +132,6 @@ public class UsuarioDAO implements IUsuarioDAO{
                     usuario.setEmail(rs.getString("email"));
                     usuario.setPassword(rs.getString("password"));
                     usuario.setRol(rs.getString("rol"));
-                    usuario.setFechaRegistro(rs.getDate("fechaRegistro"));
 
                 }
 
@@ -169,7 +166,6 @@ public class UsuarioDAO implements IUsuarioDAO{
                     usuario.setEmail(rs.getString("email"));
                     usuario.setPassword(rs.getString("password"));
                     usuario.setRol(rs.getString("rol"));
-                    usuario.setFechaRegistro(rs.getDate("fechaRegistro"));
 
                 }
 
@@ -203,7 +199,6 @@ public class UsuarioDAO implements IUsuarioDAO{
                      usuario.setEmail(rs.getString("email"));
                      usuario.setPassword(rs.getString("password"));
                      usuario.setRol(rs.getString("rol"));
-                     usuario.setFechaRegistro(rs.getDate("fechaRegistro"));
 
                      usuarios.add(usuario);
                  }
@@ -234,7 +229,6 @@ public class UsuarioDAO implements IUsuarioDAO{
                 usuario.setEmail(rs.getString("email"));
                 usuario.setPassword(rs.getString("password"));
                 usuario.setRol(rs.getString("rol"));
-                usuario.setFechaRegistro(rs.getDate("fechaRegistro"));
 
                 usuarios.add(usuario);
             }
@@ -267,7 +261,6 @@ public class UsuarioDAO implements IUsuarioDAO{
                     usuario.setEmail(rs.getString("email"));
                     usuario.setPassword(rs.getString("password"));
                     usuario.setRol(rs.getString("rol"));
-                    usuario.setFechaRegistro(rs.getDate("fechaRegistro"));
 
                     usuarios.add(usuario);
                 }
