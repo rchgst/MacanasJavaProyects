@@ -1,20 +1,38 @@
 package biblioteca_app.presentacion.paneles;
 
-import biblioteca_app.dominio.Usuario;
+import biblioteca_app.controladores.LibroContoller;
+import biblioteca_app.datos.AutorDAO;
+import biblioteca_app.datos.LibroDAO;
+import biblioteca_app.datos.PrestamoDAO;
+import biblioteca_app.presentacion.VentanaPrincipal;
+import biblioteca_app.presentacion.paneles.panelesUsuario.*;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class UsuarioView extends JPanel {
-    private JLabel saludo;
+    private PanelLibro libros;
+    private PanelPrestamos prestamos;
+    private PanelAutores autores;
+    private JTabbedPane pestañas;
+    private LibroContoller contoller;
+    private LibroDAO libroDAO;
+    private AutorDAO autorDAO;
+    private PrestamoDAO prestamoDAO;
+    private VentanaPrincipal ventanaPrincipal;
 
     public UsuarioView(){
-        saludo = new JLabel("hola bienvenido");
 
-        setLayout(new GridLayout(1,1));
+        libros = new PanelLibro(contoller);
+        prestamos = new PanelPrestamos();
+        autores = new PanelAutores();
+        pestañas = new JTabbedPane();
 
-        add(saludo);
+        pestañas.add("libros",libros);
+        pestañas.add("prestamos",prestamos);
+        pestañas.add("autores",autores);
 
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        add(pestañas);
         setVisible(true);
     }
 

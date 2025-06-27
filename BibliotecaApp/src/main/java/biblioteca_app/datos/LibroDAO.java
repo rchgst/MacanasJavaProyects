@@ -1,6 +1,7 @@
 package biblioteca_app.datos;
 
 import biblioteca_app.conexionDB.ConexionBDD;
+import biblioteca_app.dominio.Autor;
 import biblioteca_app.dominio.Libro;
 
 import java.sql.Connection;
@@ -127,5 +128,318 @@ public class LibroDAO implements ILibroDAO{
         }
     }
 
+    /**
+     * @param titulo
+     * @return
+     */
+    @Override
+    public Libro buscarPorTitulo(String titulo) {
+        String sql = "SELECT * FROM libros WHERE titulo = ?";
+        Libro libro = null;
+
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ){
+            ps.setString(1,titulo);
+
+            try (ResultSet rs = ps.executeQuery()){
+                if(rs.next()){
+                    libro = new Libro();
+                    seteaCamposLibro(libro,rs);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("error al buscar el libro con el titulo");
+        }
+
+        return libro;
+    }
+
+    /**
+     * @param isbn
+     * @return
+     */
+    @Override
+    public Libro buscarPorIsbn(String isbn) {
+        String sql = "SELECT * FROM libros WHERE isbn = ?";
+        Libro libro = null;
+
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setString(1,isbn);
+
+            try (ResultSet rs = ps.executeQuery()){
+                if(rs.next()){
+                    libro = new Libro();
+                    seteaCamposLibro(libro,rs);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("error al buscar el libro con el isbn");
+        }
+
+        return libro;
+    }
+
+    /**
+     * @param titulo
+     * @param isbn
+     * @return
+     */
+    @Override
+    public Libro buscar(String titulo, String isbn) {
+        String sql = "SELECT * FROM libros WHERE isbn = ? AND titulo = ?";
+        Libro libro = null;
+
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setString(1,isbn);
+            ps.setString(2,titulo);
+
+            try (ResultSet rs = ps.executeQuery()){
+                if(rs.next()){
+                    libro = new Libro();
+                    seteaCamposLibro(libro,rs);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("error al buscar el libro");
+        }
+
+        return libro;
+    }
+
+    /**
+     * @param titulo
+     * @param isbn
+     * @param autor
+     * @return
+     */
+    @Override
+    public Libro buscar(String titulo, String isbn, Autor autor) {
+        String sql = "SELECT * FROM libros WHERE isbn = ? AND titulo = ? AND idAutor = ?";
+        Libro libro = null;
+
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setString(1,isbn);
+            ps.setString(2,titulo);
+            ps.setInt(3,autor.getId());
+
+            try (ResultSet rs = ps.executeQuery()){
+                if(rs.next()){
+                    libro = new Libro();
+                    seteaCamposLibro(libro,rs);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("error al buscar el libro");
+        }
+
+        return libro;
+    }
+
+    /**
+     * @param titulo
+     * @param isbn
+     * @param autor
+     * @param anio
+     * @return
+     */
+    @Override
+    public Libro buscar(String titulo, String isbn, Autor autor, int anio) {
+        String sql = "SELECT * FROM libros WHERE isbn = ? AND titulo = ? AND idAutor = ? AND anio = ?";
+        Libro libro = null;
+
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setString(1,isbn);
+            ps.setString(2,titulo);
+            ps.setInt(3,autor.getId());
+            ps.setInt(4,anio);
+
+            try (ResultSet rs = ps.executeQuery()){
+                if(rs.next()){
+                    libro = new Libro();
+                    seteaCamposLibro(libro,rs);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("error al buscar el libro");
+        }
+
+        return libro;
+    }
+
+    /**
+     * @param titulo
+     * @param isbn
+     * @param autor
+     * @param categorria
+     * @return
+     */
+    @Override
+    public Libro buscar(String titulo, String isbn, Autor autor, String categorria) {
+        String sql = "SELECT * FROM libros WHERE isbn = ? AND titulo = ? AND idAutor = ? AND categoria = ?";
+        Libro libro = null;
+
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setString(1,isbn);
+            ps.setString(2,titulo);
+            ps.setInt(3,autor.getId());
+            ps.setString(4,categorria);
+
+            try (ResultSet rs = ps.executeQuery()){
+                if(rs.next()){
+                    libro = new Libro();
+                    seteaCamposLibro(libro,rs);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("error al buscar el libro");
+        }
+
+        return libro;
+    }
+
+    /**
+     * @param autor
+     * @return
+     */
+    @Override
+    public List<Libro> librosDeAutor(Autor autor) {
+        String sql = "SELECT * FROM libros WHERE idAutor = ?";
+        List<Libro>libros = new ArrayList<>();
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ){
+            ps.setInt(1,autor.getId());
+
+            try (ResultSet rs = ps.executeQuery()){
+                while (rs.next()){
+                    Libro libro = new Libro();
+                    seteaCamposLibro(libro,rs);
+                    libros.add(libro);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("error al generar lista de libros de un autor");
+        }
+        return libros;
+    }
+
+    /**
+     * @param genero
+     * @return
+     */
+    @Override
+    public List<Libro> librosPorGenero(String genero) {
+        String sql = "SELECT * FROM libros WHERE categoria = ?";
+        List<Libro>libros = new ArrayList<>();
+
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ){
+            ps.setString(1,genero);
+
+            try (ResultSet rs = ps.executeQuery()){
+                while (rs.next()){
+                    Libro libro = new Libro();
+                    seteaCamposLibro(libro,rs);
+                    libros.add(libro);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("error al generar lista de una misma categoria");
+        }
+        return libros;
+    }
+
+    /**
+     * @param anio
+     * @return
+     */
+    @Override
+    public List<Libro> librosEnUnAnio(int anio) {
+        String sql = "SELECT * FROM libros WHERE anio = ?";
+        List<Libro>libros = new ArrayList<>();
+
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ){
+            ps.setInt(1,anio);
+
+            try (ResultSet rs = ps.executeQuery()){
+                while (rs.next()){
+                    Libro libro = new Libro();
+                    seteaCamposLibro(libro,rs);
+                    libros.add(libro);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("error al generar lista de libros en el año");
+        }
+        return libros;
+    }
+
+    /**
+     * @param id
+     * @param titulo
+     */
+    @Override
+    public void actualizarTitulo(int id, String titulo) {
+
+    }
+
+    /**
+     * @param id
+     * @param isbn
+     */
+    @Override
+    public void actualizarIsbn(int id, String isbn) {
+
+    }
+
+    /**
+     * @param id
+     * @param autor
+     */
+    @Override
+    public void actualizarAutor(int id, Autor autor) {
+
+    }
+
+    /**
+     * @param id
+     * @param categoria
+     */
+    @Override
+    public void actualizarCategoria(int id, String categoria) {
+
+    }
+
+    /**
+     * @param id
+     * @param anio
+     */
+    @Override
+    public void actualizarAnio(int id, int anio) {
+
+    }
 }
 
