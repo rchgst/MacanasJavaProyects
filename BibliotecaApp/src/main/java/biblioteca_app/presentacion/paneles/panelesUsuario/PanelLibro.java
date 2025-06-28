@@ -20,4 +20,11 @@ public class PanelLibro extends JPanel {
         setVisible(true);
     }
 
+    public BusquedaPanel getBusquedaPanel() {
+        return busquedaPanel;
+    }
+
+    public ResultadoPanel getResultadoPanel() {
+        return resultadoPanel;
+    }
 }

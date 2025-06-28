@@ -22,8 +22,6 @@ public class BusquedaPanel extends JPanel {
          buscar = new JButton("buscar");
          this.contol = control;
 
-         buscar.addActionListener(control);
-
          setLayout(new GridLayout(1,5));
          add(titulo);
          add(buscarTitulo);
@@ -32,4 +30,15 @@ public class BusquedaPanel extends JPanel {
          add(buscar);
     }
 
+    public JTextField getBuscarTitulo() {
+        return buscarTitulo;
+    }
+
+    public JTextField getBuscarIsbn() {
+        return buscarIsbn;
+    }
+
+    public JButton getBuscar() {
+        return buscar;
+    }
 }

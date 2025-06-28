@@ -74,7 +74,7 @@ public class LibroDAO implements ILibroDAO{
 
     @Override
     public void insertaLibro(Libro libro) {
-        String sql = "INSERT INTO libros(titulo,anio,isbn,categoria) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO libros(titulo,anio,isbn,categoria) VALUES (?, ?, ?, ?)";
 
         try (
                 Connection conn = ConexionBDD.getConexion();

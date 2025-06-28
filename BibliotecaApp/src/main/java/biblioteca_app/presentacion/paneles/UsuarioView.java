@@ -21,11 +21,17 @@ public class UsuarioView extends JPanel {
     private VentanaPrincipal ventanaPrincipal;
 
     public UsuarioView(){
+        libroDAO = new LibroDAO();
+        autorDAO = new AutorDAO();
+        prestamoDAO = new PrestamoDAO();
 
         libros = new PanelLibro(contoller);
         prestamos = new PanelPrestamos();
         autores = new PanelAutores();
         pestañas = new JTabbedPane();
+
+        contoller = new LibroContoller(libroDAO,libros);
+        libros.getBusquedaPanel().getBuscar().addActionListener(contoller);
 
         pestañas.add("libros",libros);
         pestañas.add("prestamos",prestamos);

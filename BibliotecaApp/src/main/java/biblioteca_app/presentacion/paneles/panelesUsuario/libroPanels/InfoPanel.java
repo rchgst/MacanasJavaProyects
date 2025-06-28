@@ -1,6 +1,9 @@
 package biblioteca_app.presentacion.paneles.panelesUsuario.libroPanels;
 
+import biblioteca_app.dominio.Libro;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class InfoPanel extends JPanel {
     private JLabel titulo;
@@ -24,10 +27,10 @@ public class InfoPanel extends JPanel {
         resultEmision = new JLabel("");
         resultCategoria = new JLabel("");
 
+        setLayout(new GridLayout(4,2));
+
         add(titulo);
         add(resultTitulo);
-        add(autor);
-        add(resultAutor);
         add(isbn);
         add(resultIsbn);
         add(emision);
@@ -82,5 +85,13 @@ public class InfoPanel extends JPanel {
 
     public void setResultCategoria(JLabel resultCategoria) {
         this.resultCategoria = resultCategoria;
+    }
+
+    public void generarDatos(Libro libro){
+        resultTitulo.setText(libro.getTitulo());
+        resultCategoria.setText(libro.getCategoria());
+        resultIsbn.setText(libro.getIsbn());
+        resultEmision.setText(String.valueOf(libro.getAnio()));
+        repaint();
     }
 }

@@ -25,4 +25,16 @@ public class ResultadoPanel extends JPanel {
         add(contenedor);
         cardLayout.show(contenedor,"esperaResult");
     }
+
+    public void mostrarEsperaResult(){
+        cardLayout.show(contenedor,"esperaResult");
+    }
+
+    public void mostrarInfoLibro(){
+        cardLayout.show(contenedor,"infoLibro");
+    }
+
+    public InfoPanel getInfoPanel() {
+        return infoPanel;
+    }
 }
