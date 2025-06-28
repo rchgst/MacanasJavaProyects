@@ -27,7 +27,7 @@ public class LibroDAO implements ILibroDAO{
     @Override
     public List<Libro> lista() {
         List<Libro>libros = new ArrayList<>();
-        String sql = "SELECT * FROM libro ORDER BY id";
+        String sql = "SELECT * FROM libros ORDER BY id";
 
         try(
                 Connection conn = ConexionBDD.getConexion();
@@ -49,7 +49,7 @@ public class LibroDAO implements ILibroDAO{
 
     @Override
     public Libro buscarId(Libro libro) {
-        String sql = "SELECT * FROM libro WHERE id = ?";
+        String sql = "SELECT * FROM libros WHERE id = ?";
         Libro libroRet = null;
 
         try (
@@ -74,7 +74,7 @@ public class LibroDAO implements ILibroDAO{
 
     @Override
     public void insertaLibro(Libro libro) {
-        String sql = "INSERT INTO libro(titulo,anio,isbn,categoria) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO libros(titulo,anio,isbn,categoria) VALUES (?, ?, ?, ?, ?)";
 
         try (
                 Connection conn = ConexionBDD.getConexion();
@@ -92,7 +92,7 @@ public class LibroDAO implements ILibroDAO{
 
     @Override
     public void eliminaLibro(Libro libro) {
-        String sql = "DELETE FROM libro WHERE id = ?";
+        String sql = "DELETE FROM libros WHERE id = ?";
 
         try (
                 Connection conn = ConexionBDD.getConexion();
@@ -110,7 +110,7 @@ public class LibroDAO implements ILibroDAO{
 
     @Override
     public void actualizaLibro(Libro libro) {
-        String sql = "UPDATE libro SET titulo = ?, anio = ?, isbn = ?, categoria = ? WHERE id = ?";
+        String sql = "UPDATE libros SET titulo = ?, anio = ?, isbn = ?, categoria = ? WHERE id = ?";
 
         try (
                 Connection conn = ConexionBDD.getConexion();
@@ -129,8 +129,9 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
-     * @param titulo
-     * @return
+     *  bsuca un libro por el titulo del mismo
+     * @param titulo titulo es el nombre del libro
+     * @return retorna el libro encontrado, si no encuentra retorna null
      */
     @Override
     public Libro buscarPorTitulo(String titulo) {
@@ -157,8 +158,9 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
-     * @param isbn
-     * @return
+     * busca un libro por su isbn
+     * @param isbn el isbn del libro
+     * @return devuelve el libro si lo encuentra, retorna null en caso contrario
      */
     @Override
     public Libro buscarPorIsbn(String isbn) {
@@ -185,9 +187,10 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
+     * busca un libro con dos datos el titulo y el isbn
      * @param titulo
      * @param isbn
-     * @return
+     * @return retorna el libro si lo encuentra, retorna null si no lo encuentra
      */
     @Override
     public Libro buscar(String titulo, String isbn) {
@@ -215,10 +218,11 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
+     * busqueda mas avanzada y especifica
      * @param titulo
      * @param isbn
      * @param autor
-     * @return
+     * @return retorna el libro si lo encuentra, en caso contrario devuelve null
      */
     @Override
     public Libro buscar(String titulo, String isbn, Autor autor) {
@@ -247,11 +251,12 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
+     * busqueda mas especificas con 4 parametros, asegurando un resultado mas preciso
      * @param titulo
      * @param isbn
      * @param autor
      * @param anio
-     * @return
+     * @return si se encuentra el libro lo retorna y si no lo encuentra devuelve null
      */
     @Override
     public Libro buscar(String titulo, String isbn, Autor autor, int anio) {
@@ -281,11 +286,12 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
+     * busqueda mas especifica de 4 parametros, aseguando un resultado mas preciso
      * @param titulo
      * @param isbn
      * @param autor
      * @param categorria
-     * @return
+     * @return devuelve el libro si se encuentra , si no devuelve null
      */
     @Override
     public Libro buscar(String titulo, String isbn, Autor autor, String categorria) {
@@ -315,8 +321,10 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
+     * genera una lista de libros de un mismo autor
      * @param autor
-     * @return
+     * @return devuelve la lista generada con todos los libros encontrados
+     * si no encuentra libros la lista estara vacia
      */
     @Override
     public List<Libro> librosDeAutor(Autor autor) {
@@ -342,8 +350,10 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
+     * devuelve una lista de libros que comparten una misma categoria
      * @param genero
-     * @return
+     * @return devuelve la lista con todos los libros que encontro con la misma categoria
+     * si no encuentra libros devuelve una lista vacia
      */
     @Override
     public List<Libro> librosPorGenero(String genero) {
@@ -370,8 +380,10 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
-     * @param anio
-     * @return
+     * Devuelve todos los libros publicados en un año específico.
+     *
+     * @param anio el año a buscar
+     * @return lista de libros publicados ese año
      */
     @Override
     public List<Libro> librosEnUnAnio(int anio) {
@@ -381,7 +393,7 @@ public class LibroDAO implements ILibroDAO{
         try (
                 Connection con = ConexionBDD.getConexion();
                 PreparedStatement ps = con.prepareStatement(sql);
-                ){
+        ){
             ps.setInt(1,anio);
 
             try (ResultSet rs = ps.executeQuery()){
@@ -398,48 +410,118 @@ public class LibroDAO implements ILibroDAO{
     }
 
     /**
-     * @param id
-     * @param titulo
+     * Actualiza el título de un libro por su ID.
+     *
+     * @param id el ID del libro
+     * @param titulo el nuevo título
      */
     @Override
     public void actualizarTitulo(int id, String titulo) {
+        String sql = "UPDATE libros SET titulo = ? WHERE id = ?";
+
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setString(1,titulo);
+            ps.setInt(2,id);
+
+            ps.execute();
+        }catch (Exception e){
+            System.out.println("error al actualizar el titulo");
+        }
 
     }
 
     /**
-     * @param id
-     * @param isbn
+     * Actualiza el ISBN de un libro por su ID.
+     *
+     * @param id el ID del libro
+     * @param isbn el nuevo ISBN
      */
     @Override
     public void actualizarIsbn(int id, String isbn) {
+        String sql = "UPDATE libros SET isbn = ? WHERE id = ?";
 
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setString(1,isbn);
+            ps.setInt(2,id);
+
+            ps.execute();
+        }catch (Exception e){
+            System.out.println("error al actualizar el isbn");
+        }
     }
 
     /**
-     * @param id
-     * @param autor
+     * Actualiza el autor de un libro por su ID.
+     *
+     * @param id el ID del libro
+     * @param autor el nuevo autor
      */
     @Override
     public void actualizarAutor(int id, Autor autor) {
+        String sql = "UPDATE libros SET idAutor = ? WHERE id = ?";
 
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setInt(1,autor.getId());
+            ps.setInt(2,id);
+
+            ps.execute();
+        }catch (Exception e){
+            System.out.println("error al actualizar el autor");
+        }
     }
 
     /**
-     * @param id
-     * @param categoria
+     * Actualiza la categoría de un libro por su ID.
+     *
+     * @param id el ID del libro
+     * @param categoria la nueva categoría
      */
     @Override
     public void actualizarCategoria(int id, String categoria) {
+        String sql = "UPDATE libros SET categoria = ? WHERE id = ?";
 
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setString(1,categoria);
+            ps.setInt(2,id);
+
+            ps.execute();
+        }catch (Exception e){
+            System.out.println("error al actualizar el categoria");
+        }
     }
 
     /**
-     * @param id
-     * @param anio
+     * Actualiza el año de publicación de un libro por su ID.
+     *
+     * @param id el ID del libro
+     * @param anio el nuevo año
      */
     @Override
     public void actualizarAnio(int id, int anio) {
+        String sql = "UPDATE libros SET anio = ? WHERE id = ?";
 
+        try (
+                Connection con = ConexionBDD.getConexion();
+                PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setInt(1,anio);
+            ps.setInt(2,id);
+
+            ps.execute();
+        }catch (Exception e){
+            System.out.println("error al actualizar el anio");
+        }
     }
 }
-
