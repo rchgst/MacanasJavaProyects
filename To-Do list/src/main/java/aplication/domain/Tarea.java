@@ -1,4 +1,4 @@
-package org.aplication.domain;
+package aplication.domain;
 
 import java.time.LocalDate;
 import java.util.Objects;

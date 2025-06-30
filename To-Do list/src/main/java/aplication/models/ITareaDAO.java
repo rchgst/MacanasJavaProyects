@@ -1,6 +1,6 @@
-package org.aplication.models;
+package aplication.models;
 
-import org.aplication.domain.Tarea;
+import aplication.domain.Tarea;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,14 +21,14 @@ public interface ITareaDAO {
     List<Tarea> listarVencidas();
 
     // Validaciones
-    boolean existe(Tarea tarea);
+    boolean existe(int id);
 
     // Actualizaciones utiles
-    void actualizarDescripcion(String nuevaDescripcion);
-    void actualizarFechaCreacion(LocalDate nuevaFecha);
-    void actualizarFechaLimite(LocalDate nuevaFecha);
-    void actualizarPrioridad(String nuevaPrioridad);
-    void actualizarEstado(String nuevoEstado);
+    void actualizarDescripcion(int iodTarea,String nuevaDescripcion);
+    void actualizarFechaCreacion(int iodTarea,LocalDate nuevaFecha);
+    void actualizarFechaLimite(int iodTarea,LocalDate nuevaFecha);
+    void actualizarPrioridad(int iodTarea,String nuevaPrioridad);
+    void actualizarEstado(int iodTarea,String nuevoEstado);
 
     // conteos utiles
     int cantidadDeTareas();
