@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="601.0" prefWidth="800.0" spacing="10.0" style="-fx-background-color: #354f52;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+
+   <children>
+      <!-- Panel izquierdo -->
+      <VBox fx:id="leftPane" alignment="TOP_CENTER" prefHeight="591.0" prefWidth="198.0" spacing="10" AnchorPane.leftAnchor="0.0">
+         <children>
+            <VBox prefHeight="31.0" prefWidth="170.0">
+               <children>
+      
+                  <ComboBox fx:id="comboBoxVariables" onAction="#comboBoxEvent" prefHeight="8.0" prefWidth="150" promptText="variables" style="-fx-background-color: #84a98c;">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="28.0" top="40.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="529.0" prefWidth="198.0" VBox.vgrow="ALWAYS">
+               <children>
+      
+                  <HBox prefHeight="33.0" prefWidth="154.0" spacing="10">
+                     <Button fx:id="btnOR" onAction="#orClick" prefWidth="65" style="-fx-background-color: #84a98c;" text="OR">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <Button fx:id="btnAND" onAction="#andClick" prefWidth="65" style="-fx-background-color: #84a98c;" text="AND">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+      
+                  <HBox spacing="10">
+                     <Button fx:id="btnNOT" onAction="#notClick" prefWidth="65" style="-fx-background-color: #84a98c;" text="NOT">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <Button fx:id="btnXOR" onAction="#xorClick" prefWidth="65" style="-fx-background-color: #84a98c;" text="XOR">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" />
+                     </VBox.margin>
+                  </HBox>
+      
+                  <HBox prefHeight="13.0" prefWidth="154.0" spacing="10">
+                     <Button fx:id="btnParentesis1" onAction="#parentesis1Click" prefWidth="65" style="-fx-background-color: #84a98c;" text="(">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <Button fx:id="btnParentesis2" onAction="#parentesis2Click" prefWidth="65" style="-fx-background-color: #84a98c;" text=")">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" />
+                     </VBox.margin>
+                  </HBox>
+      
+                  <HBox spacing="10">
+                     <Button fx:id="btnGenerar" onAction="#generarClick" prefWidth="65" style="-fx-background-color: #84a98c;" text="OK">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <Button fx:id="btnVaciar" onAction="#vaciarClick" prefWidth="65" style="-fx-background-color: #84a98c;" text="del">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <GridPane prefHeight="157.0" prefWidth="198.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="104.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="94.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="79.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="btnVariableA" disable="true" mnemonicParsing="false" onAction="#clickVariable" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #84a98c;" text="a">
+                           <GridPane.margin>
+                              <Insets left="35.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="btnVariableB" disable="true" mnemonicParsing="false" onAction="#clickVariable" prefHeight="38.0" prefWidth="66.0" style="-fx-background-color: #84a98c;" text="b" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="btnVariableC" disable="true" mnemonicParsing="false" onAction="#clickVariable" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #84a98c;" text="c" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="35.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="btnVariabledD" disable="true" mnemonicParsing="false" onAction="#clickVariable" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #84a98c;" text="d" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="btnVariableE" disable="true" mnemonicParsing="false" onAction="#clickVariable" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #84a98c;" text="e" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="35.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="btnVariableF" disable="true" mnemonicParsing="false" onAction="#clickVariable" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #84a98c;" text="f" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                     </children>
+                  </GridPane>
+               </children>
+               <VBox.margin>
+                  <Insets top="24.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+
+      <!-- Panel derecho -->
+      <VBox fx:id="rightPane" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="410.0" spacing="10" HBox.hgrow="ALWAYS">
+
+      <children>
+
+            <Label alignment="CENTER" maxWidth="Infinity" prefHeight="62.0" prefWidth="592.0" text="BooleanApp" textFill="#fffefe">
+               <font><Font size="22.0" /></font>
+            </Label>
+
+            <Label fx:id="lblResultadoFuncion" alignment="CENTER" maxWidth="Infinity" textFill="WHITE">
+               <font><Font size="18.0" /></font>
+            </Label>
+            <ImageView fx:id="imgResultado" fitHeight="49.0" fitWidth="549.0" pickOnBounds="true" preserveRatio="true" />
+
+            <TableView fx:id="tabla" prefHeight="541.0" prefWidth="552.0" style="-fx-background-color: #cad2c5;" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="15.0" right="25.0" />
+               </VBox.margin></TableView>
+
+            <HBox alignment="CENTER" prefHeight="73.0" prefWidth="344.0" spacing="20">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+
+         </children>
+      </VBox>
+
+   </children>
+</HBox>
