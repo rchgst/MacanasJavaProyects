@@ -41,6 +41,7 @@ public class MiFrame extends JFrame {
             else{
                 boton.setText("OK");
                 boton.setBackground(Color.RED);
+                boton.setBackground(Color.WHITE);
             }
         }
     }
